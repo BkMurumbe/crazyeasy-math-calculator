@@ -1,0 +1,589 @@
+
+<!-- CrazyEasy Math calculator made by Balaji Murumbe for makeing complex math smooth easy. if you think anything you can add let me know. owned by Balaji Murumbe, All rights reserved. Don't try to copy the code, its bad habbit to copy others code, enlarge your own creativity-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+				<meta name="theme-color" content="#F6C999" />	
+    <title>Math calculator</title>
+    <style>
+        body{
+           margin:0;
+           padding:0;
+           font-family:arial;
+        }
+        
+        *{
+            
+            box-sizing:border-box;
+        }
+        
+        .page1{
+            height:100vh;
+            width:100vw;
+            display:flex;
+            flex-direction:column;
+            justify-content:top;
+            align-items:center;
+            padding:2vh 2vw 10vh 2vw;
+            overflow:auto;
+            
+        }
+        
+        .cardbox{
+            width:100%;
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:top;
+            align-items:center;
+        }
+        
+        .textareabox1,.textareabox2{
+            
+          height:60px;
+          width:100%;  
+          text-align:center;  
+          font-size:1.5em;
+          border:none;
+          outline:none;
+          
+        }
+        
+        .textareabox1:focus{
+        
+          background:#E3D9BE;
+          
+        } 
+        
+        .textareabox2:hover{
+            
+           outline:solid 1.5px dodgerblue; 
+        }
+        
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-bottom:10vh;
+            margin-top:6vh;
+        }
+        
+        th,td{
+            height:60px;
+            padding:4px;
+            width:100vw;
+            border:solid 1.5px silver;
+        }
+        
+        
+       
+       #rowselect{
+       
+           height:40px;
+           width:70vw;
+           border:none;
+           padding:8px;
+           font-size:1em;
+           font-weight:bold;
+           color:#000;
+           background:none;
+           text-align: center;
+           outline:none;
+       }
+       
+      #rowselect:active{
+          
+          background:orange;
+      }
+       
+       .btnbar{
+       
+           position:fixed;
+           bottom:0;
+           display:flex;
+           justify-content:space-around;
+           align-items: center;
+           height:40px;
+           width:100vw;
+           background:#F6C999;
+           z-index:10;
+           color:#fff;
+           box-shadow:0px -4px 6px rgba(0,0,0,0.3);
+       }
+       
+       #rowtitle{
+       
+           width:30vw;
+           font-size:1em;
+           font-weight:bold;
+           color:#000;
+           text-align:center;
+           
+       }
+      
+       #introcard{
+          
+        
+          background:#E3D9BE;
+          border-radius:8px; 
+          padding:8px; 
+          color:#000; 
+          
+       }
+       #caltype{
+           
+         height:60px;
+         width:100%;
+         font-size:16px;
+         font-weight:bold;
+         outline:none;
+         border:none;
+       }
+       
+       #cred a{
+           
+           text-decoration:none;
+           color:blue;
+       }
+      #titlebarone{
+          display:flex;
+          justify-content:left;
+          align-items:center;
+          position:sticky;
+          top:0;
+          height:60px;
+          width:100vw;
+          padding:8px 12px 8px 12px;
+          color:#000;
+          background:#F6C999;
+          z-index:20;
+          box-shadow:0px 4px 6px grey;
+        
+      }
+      
+      #titlename{
+          
+          font-size:1.5em;
+          font-weight:bold;
+         
+      }
+      
+    </style>
+</head>
+<body>
+ <div id="titlebarone">
+ <p id="titlename">CrazyEasy calcy</p>  
+ </div> 
+ <div class="page1">   
+ <div class="cardbox">
+     <div id="introcard" onclick="tog()">
+         <div>
+         <h2>School Math calculator</h2>
+         <p><strong>Calculate Square,cube, squareroot,cuberoot,log10, trigonometry,check prime and more in one Tap</strong></p>
+         <p>Complex calculations now made Crazy Easy.</p>
+         <p><small>Help: Add rows in table, choose what you want to calculate and Enter data to see result.</small></p>
+         <p><small id="cred"><i><a href="https://bkmurumbe.github.io">Made by Balaji Murumbe</a></i></small></p>
+         <p>Close ❌</p>
+         </div>
+         </div>
+   
+ </div> 
+  
+ <div class="cardbox">
+     <div>
+          <p><small>Tip: double click on table to clear all data</small></p>   
+         <table ondblclick="cleardata()" id="caltab">
+             <thead>
+                 <tr>
+                 <th>Number</th>
+                 <th>
+                   <select id="caltype" onchange="main()">
+                    <optgroup label="Most used">
+                     <option value="square">Square</option>
+                     <option value="cube">Cube</option>
+                     <option value="sqroot">squaroot</option>
+                       <option value="cbroot">cuberoot</option>
+                </optgroup>
+                <optgroup label="logarithmic">    
+                     <option value="log10">log10</option>
+                </optgroup>   
+                <optgroup label="Trigonometry">   
+                     <option value="sin">sin</option>
+                     <option value="cos">cos</option>
+                     <option value="tan">tan</option>
+                     <option value="cot">cot</option>
+                     <option value="sec">sec</option>
+                     <option value="cosec">cosec</option>
+                   </optgroup> 
+                   <optgroup label="Other">
+                     <option value="pri">is prime</option>
+                     <option value="fact">factorial</option>  
+                     </optgroup>
+                   </select>
+                 </th>
+                 </tr>
+             </thead>
+             <tbody id="tablebody">
+              
+              
+            
+             </tbody>    
+         </table>
+     </div>
+ </div> 
+ 
+ </div>
+ 
+ <div class="btnbar" onclick="gettextbox()">
+   <div id="rowtitle"><p>rows</p></div>
+     <div id="selectcard">
+         <select id="rowselect" onchange="main()">
+             <option>Add Rows</option>
+             <option selected>2</option>
+             <option>3</option>
+             <option>4</option>
+             <option>5</option>
+             <option>6</option>
+             <option>7</option>
+             <option>8</option>
+             <option>9</option>
+             <option>10</option>
+             <option>100</option>  
+         </select>
+          
+     </div> 
+ </div>
+ <script>
+    
+    getrose(); 
+    function tog() {
+  var box = document.getElementById("introcard");
+  if (box.style.display === "none") {
+    box.style.display = "block";
+  } else {
+    box.style.display = "none";
+  }
+}
+
+
+    function main(){
+    
+        removechilds();
+        getrose();
+        gettextbox();
+        
+    } 
+    
+    function getrose(){
+        
+        var getrows = document.getElementById("rowselect").value;
+        addrows(getrows);
+        
+        
+    }
+    
+    function newelement(elm){
+        
+        var newelement = document.createElement(elm);
+        
+        return newelement;
+        
+    }
+    
+   function appendelement(parentel,childel){
+       
+      parentel.appendChild(childel);
+       
+   }
+   
+   function addtext(textelm,newtext){
+       
+       var textnode = document.createTextNode(newtext);
+       textelm.appendChild(newtext);
+         
+   }
+   
+   function addattr(el,attr,attrvalue){
+       
+       el.setAttribute(attr,attrvalue);
+   }
+   
+   function removechilds(){
+       
+       let element = document.getElementById("tablebody");
+while (element.firstChild) {
+  element.removeChild(element.firstChild);
+}
+
+   }
+    
+    function addrows(numberofrows){
+        
+        var getparent = document.getElementById("tablebody");
+        
+     for(var row=0;row<numberofrows;row++){
+     
+        var makerow = newelement("tr");
+        
+        
+        
+        var clonecell = newelement("td");
+        var cltwocell = newelement("td")
+        var maketextbox1 = newelement("input");
+        var maketextbox2 = newelement("input"); addattr(maketextbox1,"class","textareabox1");
+addattr(maketextbox2,"class","textareabox2");        
+addattr(maketextbox1,"oninput","gettextbox()");  
+addattr(maketextbox1,"type","number");
+addattr(maketextbox2,"type","text");    
+addattr(maketextbox2,"disabled","disabled");        appendelement(clonecell,maketextbox1);        appendelement(cltwocell,maketextbox2);
+appendelement(makerow,clonecell);
+appendelement(makerow,cltwocell);
+appendelement(getparent,makerow);
+        
+        }
+        
+    }
+    
+ var getboxinp1 = document.getElementsByClassName("textareabox1");
+ var getboxinp2 = document.getElementsByClassName("textareabox2");   
+ 
+    function gettextbox(){
+        
+        var ansis;
+        var caltype = document.getElementById("caltype").value;
+        console.log(caltype);
+       for(let t=0;t<getboxinp1.length;t++){
+         
+        var numbernow = getboxinp1[t].value;
+        if(numbernow!=0){
+        if(caltype=="cube"){
+        console.log('hi');
+        ansis = makecube(numbernow);
+        getboxinp2[t].value =ansis;
+        }
+        if(caltype=="square"){
+         
+         ansis = makesquare(numbernow); 
+         getboxinp2[t].value = ansis;
+           
+        }
+  
+        if(caltype=="sqroot"){
+        
+           ansis = makeroot(numbernow);
+           getboxinp2[t].value = ansis;
+       }
+       
+       if(caltype=="cbroot"){
+          
+          ansis = makecuberoot(numbernow);
+          getboxinp2[t].value = ansis;
+            
+       }
+       
+       if(caltype=="log10"){
+           
+        ansis = makelog(numbernow);
+        getboxinp2[t].value = ansis;
+        
+       }
+     
+       if(caltype=="sin"){
+           
+        ansis = makesin(numbernow);
+        getboxinp2[t].value = ansis;
+        
+       }
+       
+      if(caltype=="cos"){
+           
+        ansis = makecos(numbernow);
+        getboxinp2[t].value = ansis;
+        
+       }
+       
+       if(caltype=="tan"){
+           
+        ansis = maketan(numbernow);
+        getboxinp2[t].value = ansis;
+        
+       } 
+       
+        if(caltype=="cot"){
+           
+        ansis = makecot(numbernow);
+        getboxinp2[t].value = ansis;
+        
+       }
+       
+       if(caltype=="sec"){
+           
+        ansis = makesec(numbernow);
+        getboxinp2[t].value = ansis;
+        
+       }
+    
+        if(caltype=="cosec"){
+            console.log("runed");  
+            alert("hello");
+        ansis = makecosec(numbernow);
+        getboxinp2[t].value = ansis;
+        
+       }
+      
+      if(caltype=="pri"){
+        
+        ansis = isprime(numbernow);
+        if(numbernow==1 || numbernow==0){
+           getboxinp2[t].value = ""; 
+        }
+        else{
+        if(ansis==1){
+        getboxinp2[t].value = "prime";
+        }
+        else if(ansis==0){
+            getboxinp2[t].value = "Not prime";
+        }
+       }
+        
+       }
+    
+       if(caltype=="fact"){
+       
+        ansis = factorial(numbernow);             
+        getboxinp2[t].value=ansis;
+        
+        }
+       }
+       
+     }
+        
+  }
+    
+   
+    
+    function makecube(inputnumber){
+       
+        var numbercube = inputnumber*inputnumber*inputnumber;
+        return numbercube;
+        
+    }
+    
+    function makesquare(inputnumber){
+        
+        var numsquare = inputnumber*inputnumber;
+        return numsquare;
+        
+    }
+   
+   function makeroot(inputnumber){
+       
+       var rootis = Math.sqrt(inputnumber);
+       return rootis;
+   }
+   
+   function makecuberoot(inputnumber){
+       
+       var cuberootis = Math.cbrt(inputnumber);
+       return cuberootis;
+   }
+   
+   function makelog(inputnumber){
+       
+       var logis = Math.log10(inputnumber);
+       return logis;
+   }
+   
+   function makesin(inputnumber){
+       
+       var sinvalue = Math.sin(inputnumber*Math.PI/180);
+       return sinvalue;
+       
+   }
+   
+  function makecos(inputnumber){
+      
+      var cosvalue = Math.cos(inputnumber*Math.PI/180);
+      return cosvalue;
+      
+  }
+  
+  function maketan(inputnumber){
+      
+      var tanvalue = Math.tan(inputnumber*Math.PI/180);
+      return tanvalue;
+  }
+  
+  function makecot(inputnumber){
+      
+      var cotvalue = Math.atan(inputnumber*Math.PI/180);
+      return cotvalue;
+      
+  }
+  
+  function makesec(inputnumber){
+      
+      var secvalue = Math.acos(inputnumber*Math.PI/180);
+      return secvalue;
+      
+  }
+   
+ function makecosec(inputnumber){
+     
+     var cosecvalue = Math.asin(inputnumber*Math.PI/180);
+     return cosecvalue;
+      
+ } 
+ 
+ function isprime(inputnumber){
+ 
+     var pstatus=true;
+    
+     for(var n=2;n<inputnumber;n++){
+     
+  
+        if(inputnumber%n==0){
+          
+         pstatus=false;
+         break;  
+        }
+        
+       
+     }
+     
+    return pstatus;
+   
+ }
+ 
+ function factorial(inputnumber){
+    
+    var fact=1; 
+   for(var f=1;f<=inputnumber;f++){
+       
+       
+           
+          fact*=f; 
+           
+       
+       
+   }
+   
+   return fact;  
+ }
+ 
+ 
+ 
+ function cleardata(){
+   
+       for(let t=0;t<getboxinp1.length;t++){
+       
+        getboxinp1[t].value="";
+        getboxinp2[t].value=0;
+        
+       }
+       
+   }
+   
+ </script>
+</body>
+</html>
